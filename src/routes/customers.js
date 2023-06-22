@@ -41,11 +41,11 @@ router.post("/login", async (req,res) => {
 
     const {username, password} = req.body;
 
-    var [cek] = await sequelize.query(`select * from customers where username = '${username}' and password = '${password}'`); 
+    var [cek] = await sequelize.query(`select * from customers where username = '${username}' and password = '${password}' AND status = "Berhasil Verifikasi"`); 
     
     if(cek.length < 1){
         return res.status(400).send({
-            message: "Username / Password salah",
+            message: "Username Belom Verifikasi / Username Password Salah",
         });
     }else{
         let token = jwt.sign({

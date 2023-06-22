@@ -60,7 +60,7 @@ router.post("/", multerUpload.single('picture'), async (req,res) => {
             qty: qty,
             supplier: supplier,
             price: price,
-            picture: String(picture.originalname)
+            gambar: String(picture.originalname)
         }
     )
 
@@ -71,7 +71,7 @@ router.post("/", multerUpload.single('picture'), async (req,res) => {
         supplier: supplier,
         price: "RP."+price,
         qty: qty,
-        picture: picture.originalname
+        gambar: picture.originalname
     })
 });
 
@@ -170,18 +170,18 @@ router.put("/:id", async (req,res) => {
 });
 
 //tampilkan barang
-router.get("/", async (req,res) => {
+router.get("/", multerUpload.single('picture'), async (req,res) => {
     let listProducts = await Product.findAll();
 
     let arrHasil = [];
-
     listProducts.forEach(p => {
         let temp = {
             id: p.id,
             product_name: p.product_name,
             supplier: p.supplier,
             price: "Rp. "+p.price,
-            qty: p.qty
+            qty: p.qty,
+            gambar: p.gambar
         };
         arrHasil.push(temp);
     });
@@ -215,7 +215,8 @@ router.get("/:id", async (req,res) => {
             product_name: p.product_name,
             supplier: p.supplier,
             price: "Rp. "+p.price,
-            qty: p.qty
+            qty: p.qty,
+            gambar: p.gambar
         });
     }
 });

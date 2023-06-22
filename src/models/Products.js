@@ -25,6 +25,9 @@ Product.init(
         price: {
             type: DataTypes.INTEGER,
             allowNull: false
+        },gambar: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     },
     {

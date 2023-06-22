@@ -79,8 +79,6 @@ router.post("/ongkir", async (req,res) => {
     //console.log(temp)
 });
 
-
-
 //PEMBAYARAN
 router.post("/pay", async (req,res) =>{
     //return res.status(200).send({"message": "Halo" })
@@ -109,8 +107,8 @@ router.post("/pay", async (req,res) =>{
 
         if(parseInt(saldo) >= total ){
             const mailjet = Mailjet.apiConnect( 
-                "9bc2560c63d00ad5d63e2729bc4faa4c",
-                "2cbc8f638c3c85bcb3d85f6bf7936a90",
+                "ebd48127bff9308b498db7eb939de91b",
+                "4c257df09df710d06bb0681d81b38141",
                 {
                     config: {},
                     options: {}
@@ -123,12 +121,12 @@ router.post("/pay", async (req,res) =>{
                         "Messages": [
                             {
                                 "From": {
-                                    "Email": "farhan.f20@mhs.istts.ac.id",
+                                    "Email": "sughapur@gmail.com",
                                     "Name": "Pembayaran"
                                 },
                                 "To": [
                                     {
-                                        "Email": "farhan.f20@mhs.istts.ac.id",
+                                        "Email": "sughapur@gmail.com",
                                         "Name": "Pembayaran"
                                     }
                                 ],
