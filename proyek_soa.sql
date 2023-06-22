@@ -3,13 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2023 at 04:56 PM
+-- Generation Time: Jun 22, 2023 at 05:01 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -86,8 +86,8 @@ CREATE TABLE `delivery` (
 --
 
 INSERT INTO `delivery` (`id_pengiriman`, `id_carts`, `customer`, `price`, `createdAt`, `updatedAt`, `deletedAt`) VALUES
-('DLVR_0001', 'CART_0001', 'donald', 16000, '2023-06-22 07:00:50', '2023-06-22 07:00:50', NULL),
-('DLVR_0002', 'CART_0001', 'donald', 16000, '2023-06-22 12:31:27', '2023-06-22 12:31:27', NULL);
+('DLVR_0001', 'CART_0001', 'donald', 16000, '2023-06-22 14:00:50', '2023-06-22 14:00:50', NULL),
+('DLVR_0002', 'CART_0001', 'donald', 16000, '2023-06-22 19:31:27', '2023-06-22 19:31:27', NULL);
 
 -- --------------------------------------------------------
 
@@ -137,6 +137,7 @@ ALTER TABLE `customers`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
+SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
