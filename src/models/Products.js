@@ -25,16 +25,12 @@ Product.init(
         price: {
             type: DataTypes.INTEGER,
             allowNull: false
-        },
-        picture: {
-            type: DataTypes.STRING,
-            allowNull: true
         }
     },
     {
         sequelize,
-        timestamps: false,
-        paranoid: false,
+        timestamps: true,
+        paranoid: true,
         modelName: "Product",
         tableName: "products"
     }

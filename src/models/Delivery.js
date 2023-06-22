@@ -6,16 +6,12 @@ class Delivery extends Model {}
 
 Delivery.init(
     {
-        id: {
+        id_pengiriman: {
             type: DataTypes.STRING,
             primaryKey: true,
         },
-        product_name: {
+        id_carts: {
             type: DataTypes.STRING,
-            allowNull: false
-        },
-        qty: {
-            type: DataTypes.INTEGER,
             allowNull: false
         },
         customer: {

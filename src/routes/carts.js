@@ -32,6 +32,7 @@ router.post("/", async (req,res) => {
     let check = await cart.findAll({ where: { customer: customer , product_name: product_name} });
     let temp = await Product.findOne({ where: { product_name: product_name}})
     if(check.length < 1){
+        
         const insert = await cart.create(
             {
                 id: id,

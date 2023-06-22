@@ -4,8 +4,8 @@
     "express": "^4.18.2",
     "joi": "^17.9.2",
     "jsonwebtoken": "^9.0.0",
-    "multer": "^1.4.5-lts.1",
     "mysql2": "^3.3.1",
+    "node-mailjet": "^6.0.2",
     "nodemon": "^2.0.22",
     "rajaongkir-node-js": "^2.0.1",
     "sequelize": "^6.31.1"
