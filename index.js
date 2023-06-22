@@ -9,11 +9,13 @@ const customers = require("./src/routes/customers");
 const products = require("./src/routes/products");
 const carts = require("./src/routes/carts");
 const delivery = require("./src/routes/delivery");
+const orders = require("./src/routes/orders");
 
 app.use("/api/customer", customers);
 app.use("/api/products", products);
 app.use("/api/carts", carts);
 app.use("/api/delivery", delivery);
+app.use("/api/orders", orders);
 
 app.listen(port, () => {
     console.log(`Server started at http://localhost:${port}`);

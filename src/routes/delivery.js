@@ -7,6 +7,7 @@ const axios = require("axios");
 const Delivery = require("../models/Delivery");
 const Customer = require("../models/Customer");
 const Carts = require("../models/Carts");
+const Orders = require("../models/Orders");
 const router = express.Router();
 const Sequelize = require('sequelize');
 const {getDB}       = require("../configs/connection");
@@ -59,6 +60,15 @@ router.post("/ongkir", async (req,res) => {
     let id = "DLVR_" + String((listDelivery.length)+1).padStart(4, "0");
     let findCarts = await Carts.findOne({ where: { id: id_carts}})
     temp = findCarts.customer;
+
+    const insert2 = await Orders.create(
+        {
+            id_pengiriman: id,
+            id_carts: id_carts,
+            customer: temp,
+            price: ongkir,
+        }
+    )
 
     const insert = await Delivery.create(
         {
