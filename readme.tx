@@ -1,0 +1,5 @@
+halo ini michael, sebelum mulai ngoding jangan lupa buat database dulu dengan nama proyek_soa supaya bisa buat databasenya secara otomatis. semua bisa lgsg di sync dari dalam setiap model jadi jangan lupa juga untuk setiap model untuk di kasi code buat nge sync ty
+
+oh iya untuk memulai tolong di terminal ketiknya npm start karena sudah di setting terima kasih
+
+bagi yg gtw juga caranya buat nge install node_module bisa lgsg "npm install" di terminal ya dan jangan lupa di hapus sebelum di bagi lagi di line
