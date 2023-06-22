@@ -4,11 +4,29 @@ const {getDB} = require("../configs/connection");
 const { Op } = require("sequelize");
 const DB = getDB();
 const joi = require("joi");
-
+const multer = require("multer");
 const Product = require("../models/Products");
 
+const multerDiskStorage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, 'uploads/');
+    },
+    filename: function(req, file, cb) {
+        const originalName = file.originalname;
+        const nameArr = originalName.split('.');
+        var extension = '';
+        if (nameArr.length > 1) {
+            extension = nameArr[nameArr.length - 1];
+        }
+
+        // picture-5858737388484.jpg
+        cb(null, file.fieldname +'-'+ Date.now() +'.'+extension);
+    }
+});
+
+const multerUpload = multer({storage: multerDiskStorage});
 //add product
-router.post("/", async (req,res) => {
+router.post("/", multerUpload.single('picture'), async (req,res) => {
     const schema = joi.object({
         product_name: joi.string().required(),
         supplier: joi.string().required(),
@@ -20,6 +38,13 @@ router.post("/", async (req,res) => {
         await schema.validateAsync(req.body)
     } catch (error) {
         return res.status(403).send(error.toString())
+    }
+    
+    const picture = req.file;
+
+    if (!picture) {
+        res.status(400).json({'message': 'picture cannot be empty'});
+        return
     }
 
     const { product_name, supplier, qty, price } = req.body;
@@ -34,7 +59,8 @@ router.post("/", async (req,res) => {
             product_name: product_name,
             qty: qty,
             supplier: supplier,
-            price: price
+            price: price,
+            picture: String(picture.originalname)
         }
     )
 
@@ -44,7 +70,8 @@ router.post("/", async (req,res) => {
         product_name: product_name,
         supplier: supplier,
         price: "RP."+price,
-        qty: qty
+        qty: qty,
+        picture: picture.originalname
     })
 });
 
