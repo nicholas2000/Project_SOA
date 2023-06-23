@@ -59,13 +59,15 @@ router.post("/ongkir", async (req,res) => {
 
     let id = "DLVR_" + String((listDelivery.length)+1).padStart(4, "0");
     let findCarts = await Carts.findOne({ where: { id: id_carts}})
-    temp = findCarts.customer;
+    console.log(findCarts.customer);
+    // temp = findCarts.customer;
 
     const insert2 = await Orders.create(
         {
-            id_pengiriman: id,
-            id_carts: id_carts,
-            customer: temp,
+            id: id,
+            product_name: findCarts.product_name,
+            customer: findCarts.customer,
+            qty: findCarts.qty,
             price: ongkir,
         }
     )
@@ -74,7 +76,7 @@ router.post("/ongkir", async (req,res) => {
         {
             id_pengiriman: id,
             id_carts: id_carts,
-            customer: temp,
+            customer: findCarts.customer,
             price: ongkir
         }
     )
@@ -83,7 +85,7 @@ router.post("/ongkir", async (req,res) => {
         message: "Delivery has been succesfully processed",
         id_pengiriman: id,
         id_carts: id_carts,
-        customer: temp,
+        customer: findCarts.customer,
         price: ongkir
     })
     //console.log(temp)
