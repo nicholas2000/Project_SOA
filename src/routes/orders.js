@@ -10,6 +10,7 @@ const jwt = require("jsonwebtoken");
 const Sequelize = require('sequelize');
 const {getDB}       = require("../configs/connection");
 const sequelize     = getDB();
+
 const JWT_KEY = 'Projek_SOA'
 
 //GET ID DELIVERY

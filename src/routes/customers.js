@@ -194,7 +194,7 @@ router.put("/", async (req,res) => {
  //TopUp Saldo
  router.put("/saldo/Tambah", async (req,res) => {
     var [cek1] = await sequelize.query(`select * from customers where username = '${req.body.username}'AND password ='${req.body.password}'`);
-    var [cek2] = await sequelize.query(`select * from customers where username = '${req.body.username}'AND password ='${req.body.password}'AND status ='Sudah Terverifikasi'`);
+    var [cek2] = await sequelize.query(`select * from customers where username = '${req.body.username}'AND password ='${req.body.password}'AND status ='Berhasil Verifikasi'`);
     const schema = Joi.object({
         username: Joi.string().required(),
         password: Joi.string().required(),
@@ -252,7 +252,7 @@ router.put("/", async (req,res) => {
 //Cek Saldo
 router.get("/saldo/Cek", async (req, res) => {
     var [cek1] = await sequelize.query(`select * from customers where username = '${req.body.username}'AND password ='${req.body.password}'`);
-    var [cek2] = await sequelize.query(`select * from customers where username = '${req.body.username}'AND password ='${req.body.password}'AND status ='Sudah Terverifikasi'`);
+    var [cek2] = await sequelize.query(`select * from customers where username = '${req.body.username}'AND password ='${req.body.password}'AND status ='Berhasil Verifikasi'`);
     const schema = Joi.object({
         username: Joi.string().required(),
         password: Joi.string().required(),

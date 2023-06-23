@@ -115,9 +115,12 @@ router.post("/pay", async (req,res) =>{
             temp4 = e.price
         });
         let total = parseInt(temp4)+parseInt(temp3);
-        
-
-        if(parseInt(saldo) >= total ){
+        console.log(temp4);
+        console.log(temp3);
+        console.log(total);
+        console.log(saldo);
+        if(parseInt(saldo) >= temp3 ){
+            console.log(saldo);
             const mailjet = Mailjet.apiConnect( 
                 "ebd48127bff9308b498db7eb939de91b",
                 "4c257df09df710d06bb0681d81b38141",

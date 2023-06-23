@@ -144,7 +144,6 @@ router.put("/:id", async (req,res) => {
             }
         )
     }
-
     let update = await Product.update(
         {
             product_name: product_name,
